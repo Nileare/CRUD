@@ -1,0 +1,62 @@
+﻿
+@using PruebaCrudNew.Models
+@model List<EstudianteCLS>
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>*@
+
+<table class="table table-hover">
+    <thead class="table-danger">
+        <tr>
+            <td scope="col" width="20%">@Html.LabelFor(p => Model[0].Nombre)</td>
+            <td scope="col" width="20%">@Html.LabelFor(p => Model[0].Apellido)</td>
+            <td scope="col" width="20%">@Html.LabelFor(p => Model[0].Edad)</td>
+            <td scope="col" width="20%">@Html.LabelFor(p => Model[0].Dirección)</td>
+            <td scope="col" width="20%">Operaciones</td>
+        </tr>
+        <br />
+    </thead> 
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="table-light">@item.Nombre</td>
+            <td class="table-light">@item.Apellido</td>
+            <td class="table-light">@item.Edad</td>
+            <td class="table-light">@item.Dirección</td>
+            <td class="table-light">
+                @Html.ActionLink("Editar", "Editar", "Estudiante", new { id = @item.IdEstudiante }, new { @class = "btn btn-outline-warning" })
+                @Html.ActionLink("Eliminar", "Eliminar", "Estudiante", new { id = @item.IdEstudiante }, new { @class = "btn btn-outline-danger", @onclick="eliminar()"})
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<div>
+    @Html.ActionLink("Agregar", "Agregar", "Estudiante", new { @class ="btn btn-success" })
+</div>
+<br />
+
+<script type="Text/javascript">
+    function eliminar() {
+        swal({
+        title: "Registro eliminado!",
+            text: "Presione salir",
+            icon: "success",
+            button: "Salir",
+            timer: 5000
+        });
+    }
+</script>
+
+    @*function eliminar() {
+        
+        //if (confirm("¿Desea eliminar información?") == 1) {
+        //    alert("Registro eliminado")
+        //} else {
+        //event.preventDefault()
+        //}
+    }*@
+

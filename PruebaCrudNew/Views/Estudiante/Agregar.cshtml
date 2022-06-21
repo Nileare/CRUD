@@ -1,0 +1,32 @@
+﻿@using PruebaCrudNew.Models
+@model EstudianteCLS
+@{
+    ViewBag.Title = "Agregar";
+}
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Agregar", "Estudiante", FormMethod.Post))
+        {
+            <div>
+                @Html.LabelFor(p => p.Nombre)
+                @Html.TextBoxFor(p => p.Nombre, new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.Apellido)
+                @Html.TextBoxFor(p => p.Apellido, new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.Edad)
+                @Html.TextBoxFor(p => p.Edad, new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(p => p.Dirección)
+                @Html.TextBoxFor(p => p.Dirección, new { @class = "form-control" })
+            </div>
+            <br />
+            <div style="margin:auto">
+                <input type="submit" class="btn btn-success" value="Guardar" />
+            </div>
+        }
+    </div>
+</div>
